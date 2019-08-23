@@ -9,14 +9,14 @@ import { error } from 'util';
   styleUrls: ['./gif.component.css']
 })
 export class GifComponent implements OnInit {
-gifs:Giphys []
+gifs:Giphys [];
   constructor( public httpService:HttpServiceService) { }
 
   ngOnInit() {
     this.searchGif('lion');
   }
   searchGif(searchIt){
-    this.httpService.searchGif(searchIt).then(
+    this.httpService.searchaGif(searchIt).then(
       (results)=>{
         this.gifs = this.httpService.gifys;
       },

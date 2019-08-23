@@ -1,5 +1,21 @@
 <div class="container">
   <div id="search">
-    <app-search (emitSearch) = 'searchGif($event)'></app-search>
+    <app-search (emitSearch) = 'searchSticker($event)'></app-search>
   </div>
+  <div *ngIf="sticker">
+      <div class="row" >
+        <div class="card-column" *ngFor="let sticker of sticker">
+          <div class="card" >
+            <div class="card-body">
+              <div class="card-img">
+                  <img src="{{sticker.url}}" alt="">
+              </div>    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf='!sticker'>
+      <p>no search yet</p>
+    </div>  
 </div>

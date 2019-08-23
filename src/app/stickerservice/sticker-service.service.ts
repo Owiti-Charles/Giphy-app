@@ -7,6 +7,31 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class StickerServiceService {
+  stickerArray:Giphys[]=[];
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  searchSticker(searchIt:string){
+    interface Results{
+      data:[];
+    }
+
+    let searchEndpoint = "https://api.giphy.com/v1/stickers/search?api_key="+environment.apiKey;
+    let promise = new Promise ((resolve,reject)=>{
+      this.http.get<Results>(searchEndpoint+"&q="+searchIt).toPromise().then(
+        (results)=>{
+         for(let i=0; i<results.data.length;i++){
+           this.stickerArray.push(new Giphys(results.data[i]["images"]["fixed_height_still"]["url"])) 
+         }
+         console.log(this.stickerArray);
+         resolve();
+        },
+        (error)=>{
+          console.log(error);
+          reject();
+        }
+      )
+    })
+    return promise;
+  }
 }

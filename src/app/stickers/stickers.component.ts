@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StickerServiceService } from '../stickerservice/sticker-service.service';
+import { Giphys } from '../giphys';
 
 @Component({
   selector: 'app-stickers',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stickers.component.css']
 })
 export class StickersComponent implements OnInit {
+sticker:Giphys[];
+  constructor(public stickerService:StickerServiceService){}
+  
+  searchSticker(searchIt){
+    this.stickerService.searchSticker(searchIt).then(
+      (success)=>{
+        this.sticker = this.stickerService.stickerArray;
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
 
-  constructor() { }
 
   ngOnInit() {
+    this.searchSticker('laptop');
   }
 
 }

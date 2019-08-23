@@ -11,7 +11,8 @@ export class HttpServiceService {
   gifys:Giphys[]=[];
 
   constructor(private http:HttpClient) { }
-  searchGif(searchIt:string){
+
+  searchaGif(searchIt:string){
     interface Results{
       data:[];
     }
