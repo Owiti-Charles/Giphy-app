@@ -9,6 +9,9 @@ import { GifComponent } from './gif/gif.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { HttpServiceService }from './service/http-service.service';
+import { StickerServiceService } from './stickerservice/sticker-service.service';
+import { StickersComponent } from './stickers/stickers.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,8 @@ import { HttpServiceService }from './service/http-service.service';
     GifComponent,
     NavbarComponent,
     SearchComponent,
+    StickersComponent,
+    NotFoundComponent,
     
   ],
   imports: [
@@ -24,7 +29,7 @@ import { HttpServiceService }from './service/http-service.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [HttpServiceService],
+  providers: [HttpServiceService,StickerServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

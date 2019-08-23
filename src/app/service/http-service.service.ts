@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {  HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { environment  } from '../../environments/environment';
 
@@ -9,7 +8,7 @@ import {Giphys} from '../giphys'
   providedIn: 'root'
 })
 export class HttpServiceService {
-  gifs:Giphys[]=[];
+  gifys:Giphys[]=[];
 
   constructor(private http:HttpClient) { }
   searchGif(searchIt:string){
@@ -17,14 +16,15 @@ export class HttpServiceService {
       data:[];
     }
     let searchEndpoint = "https://api.giphy.com/v1/gifs/search?api_key="+environment.apiKey;
+
     let promise = new Promise((resolve, reject)=>{
       this.http.get<Results>(searchEndpoint+"&q="+searchIt).toPromise().then(
         (results)=>{
-          this.gifs=[];
+          this.gifys=[];
           for(let i=0; i<results.data.length;i++){
-            this.gifs.push(new Giphys(results.data[i]["images"]["fixed_height"]["url"]));
+            this.gifys.push(new Giphys(results.data[i]["images"]["fixed_height"]["url"]));
           }
-          console.log(this.gifs);
+          console.log(this.gifys);
           resolve();
         },
         (error)=>{
