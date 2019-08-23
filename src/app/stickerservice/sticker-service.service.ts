@@ -20,6 +20,7 @@ export class StickerServiceService {
     let promise = new Promise ((resolve,reject)=>{
       this.http.get<Results>(searchEndpoint+"&q="+searchIt).toPromise().then(
         (results)=>{
+          this.stickerArray=[];
          for(let i=0; i<results.data.length;i++){
            this.stickerArray.push(new Giphys(results.data[i]["images"]["fixed_height_still"]["url"])) 
          }

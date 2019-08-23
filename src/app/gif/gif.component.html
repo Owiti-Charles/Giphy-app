@@ -3,15 +3,10 @@
     <app-search (emitSearch) = 'searchGif($event)'></app-search>
   </div>
   <div *ngIf="gifs">
-    <div class="row" >
-      <div class="card-column" *ngFor="let gif of gifs">
-        <div class="card" >
-          <div class="card-body">
-            <div class="card-img">
-                <img src="{{gif.url}}" alt="">
-            </div>    
-          </div>
-        </div>
+    <div class="card-columns" >
+      <div class="card" *ngFor="let gif of gifs">
+        
+                <img src="{{gif.url}}" alt="" class="card-img">
       </div>
     </div>
   </div>

@@ -13,7 +13,7 @@ gifs:Giphys [];
   constructor( public httpService:HttpServiceService) { }
 
   ngOnInit() {
-    this.searchGif('lion');
+    this.searchGif('car');
   }
   searchGif(searchIt){
     this.httpService.searchaGif(searchIt).then(
